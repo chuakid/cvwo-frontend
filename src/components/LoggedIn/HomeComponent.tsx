@@ -1,14 +1,18 @@
-import { Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import { Outlet } from 'react-router-dom'
+import Navbar from './Navbar/Navbar'
 import Sidebar from './Sidebar/Sidebar'
 
 const HomeComponent = () => {
     return (
-        <Flex>
-            <Sidebar></Sidebar>
-            <Outlet />
+        <Flex flexDirection="column" height="100vh">
+            <Navbar />
+            <Flex h="100%">
+                <Sidebar></Sidebar>
+                <Outlet />
+            </Flex>
         </Flex>
-    )
+        )
 }
 
 export default HomeComponent

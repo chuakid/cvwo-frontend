@@ -28,7 +28,7 @@ const ProjectsComponent = () => {
 
     return (
         <Box>
-            <Heading color="white" fontSize="2xl">Projects</Heading>
+            <Heading color="white" mb="2" fontSize="2xl">PROJECTS</Heading>
             <Divider></Divider>
             {loading || <Skeleton />}
             <Stack>

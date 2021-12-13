@@ -30,7 +30,7 @@ const ProjectsComponent = () => {
         <Box>
             {loading || <Skeleton />}
             <Stack>
-                {projects.map((project: Project) => <ProjectLink project={project} />)}
+                {projects.map((project: Project) => <ProjectLink key={project.id} project={project} />)}
             </Stack>
             <CreateProject></CreateProject>
 

@@ -1,4 +1,4 @@
-import { Box, Skeleton, Stack } from '@chakra-ui/react'
+import { Box, Divider, Heading, Skeleton, Stack, Text } from '@chakra-ui/react'
 import Project from '../../../types/Project'
 import { getProjects } from '../../../services/projectservices'
 import { useAppDispatch, useAppSelector } from '../../../store/typedHooks'
@@ -28,6 +28,8 @@ const ProjectsComponent = () => {
 
     return (
         <Box>
+            <Heading color="white" fontSize="2xl">Projects</Heading>
+            <Divider></Divider>
             {loading || <Skeleton />}
             <Stack>
                 {projects.map((project: Project) => <ProjectLink key={project.id} project={project} />)}

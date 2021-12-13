@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppSelector } from '../store/typedHooks'
+import { useAppSelector } from '../../store/typedHooks'
 
 const CheckLoggedIn = ({ children }: { children: ReactNode }) => {
     const jwt = useAppSelector(state => state.jwt)

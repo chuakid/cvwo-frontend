@@ -1,12 +1,12 @@
-import { Box, Link, Skeleton } from '@chakra-ui/react'
+import { Box, Link, Skeleton, Stack } from '@chakra-ui/react'
 import Project from '../../../types/Project'
 import { getProjects } from '../../../services/projectservices'
 import { useAppDispatch, useAppSelector } from '../../../store/typedHooks'
 import { useEffect, useState } from 'react'
 import { setProjects } from '../../../store/projectSlice'
-import { Link as RouterLink } from "react-router-dom";
 import { AxiosError } from 'axios'
 import CreateProject from './CreateProject'
+import ProjectLink from './ProjectLink'
 
 const ProjectsComponent = () => {
     const [loading, setLoading] = useState(true)
@@ -29,7 +29,9 @@ const ProjectsComponent = () => {
     return (
         <Box>
             {loading || <Skeleton />}
-            {projects.map((project: Project) => <Link as={RouterLink} key={project.id} to={"/project/" + project.id}>{project.name}</Link>)}
+            <Stack>
+                {projects.map((project: Project) => <ProjectLink project={project} />)}
+            </Stack>
             <CreateProject></CreateProject>
 
         </Box>

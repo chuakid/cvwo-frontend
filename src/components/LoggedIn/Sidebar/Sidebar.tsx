@@ -11,7 +11,7 @@ const Sidebar = () => {
         dispatch(setJwt(""))
     }
     return (
-        <Flex height="100vh" w="10%" bgColor="blue.800" flexDirection="column" justifyContent="space-between">
+        <Flex p="3" height="100vh" w="10%" bgColor="blue.800" flexDirection="column" justifyContent="space-between">
             <ProjectsComponent />
             <Button onClick={handleLogout} mb="2" mx="2">Logout</Button>
         </Flex>

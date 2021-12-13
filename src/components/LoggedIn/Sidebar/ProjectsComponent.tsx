@@ -1,9 +1,9 @@
 import { Box, Link, Skeleton } from '@chakra-ui/react'
-import Project from '../../types/Project'
-import { getProjects } from '../../services/projectservices'
-import { useAppDispatch, useAppSelector } from '../../store/typedHooks'
+import Project from '../../../types/Project'
+import { getProjects } from '../../../services/projectservices'
+import { useAppDispatch, useAppSelector } from '../../../store/typedHooks'
 import { useEffect, useState } from 'react'
-import { setProjects } from '../../store/projectSlice'
+import { setProjects } from '../../../store/projectSlice'
 import { Link as RouterLink } from "react-router-dom";
 import { AxiosError } from 'axios'
 import CreateProject from './CreateProject'
@@ -27,9 +27,8 @@ const ProjectsComponent = () => {
     }, [dispatch])
 
     return (
-        <Box height="100vh" w="10%" bgColor="blue.800">
+        <Box>
             {loading || <Skeleton />}
-
             {projects.map((project: Project) => <Link as={RouterLink} key={project.id} to={"/project/" + project.id}>{project.name}</Link>)}
             <CreateProject></CreateProject>
 

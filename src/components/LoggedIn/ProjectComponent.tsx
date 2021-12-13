@@ -12,7 +12,7 @@ const ProjectComponent = () => {
     const project = useAppSelector(state => state.projects.find((x) => x.id === id))
     return (
         <div>
-
+            {project?.name}
         </div>
     )
 }

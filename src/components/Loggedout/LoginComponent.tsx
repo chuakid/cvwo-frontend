@@ -1,26 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Center, Flex, FormControl, FormLabel, Stack, useToast } from "@chakra-ui/react"
 import FormInput from '../FormInput';
 import { login, register } from '../../services/userservices';
-import { setJWT } from '../../services/api';
+import { setAPIToken } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../store/typedHooks';
+import { setJwt } from '../../store/jwtSlice';
 
-const LoginComponent = ({ setLoggedIn }: { setLoggedIn: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const LoginComponent = () => {
     const formBg = "white"
     const toast = useToast()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false)
+    const dispatch = useAppDispatch()
     const navigate = useNavigate();
+    const jwt = useAppSelector(state => state.jwt)
+
+    useEffect(() => {
+        if (jwt !== "") {
+            navigate("/")
+        }
+    }, [jwt, navigate])
 
     function handleLogin() {
         setLoading(true)
         login(username, password)
             .then((result) => {
                 setLoading(false)
-                setLoggedIn(true)
-                setJWT(result.data)               
-                navigate("/", { replace: true })
+                setAPIToken(result.data)
+                dispatch(setJwt(result.data))
+                localStorage.setItem("jwt", result.data)
             })
             .catch(error => {
                 toast({

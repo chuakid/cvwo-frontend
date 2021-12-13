@@ -5,6 +5,6 @@ export let API = axios.create({
     baseURL: API_URL
 });
 
-export function setJWT(token: string) {    
+export function setAPIToken(token: string) {    
     API.defaults.headers.common['Authorization'] = "Bearer " + token;
 }

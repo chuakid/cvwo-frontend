@@ -1,18 +1,18 @@
-import { useToast } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAppSelector } from '../store/typedHooks'
 
-const CheckLoggedIn = ({ children, isLoggedIn }: { children: React.ReactNode, isLoggedIn: boolean }) => {
+const CheckLoggedIn = ({ children }: { children: ReactNode }) => {
+    const jwt = useAppSelector(state => state.jwt)
     const navigate = useNavigate()
-    let toast = useToast()
     useEffect(() => {
-        if (!isLoggedIn) {
+        if (jwt === "") {
             navigate("/login")
-            toast({ "title": "Please log in" })
         }
-    }, [isLoggedIn, navigate, toast])
-
-    return <>{isLoggedIn ? children : null}</>
+    }, [jwt, navigate])
+    return (
+        <> {children} </>
+    )
 }
 
 export default CheckLoggedIn

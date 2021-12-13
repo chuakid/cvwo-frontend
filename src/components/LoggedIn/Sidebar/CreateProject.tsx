@@ -1,8 +1,8 @@
 import { Container, Button, Input } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { createProject } from '../../services/projectservices'
-import { addProject } from '../../store/projectSlice'
-import { useAppDispatch } from '../../store/typedHooks'
+import { createProject } from '../../../services/projectservices'
+import { addProject } from '../../../store/projectSlice'
+import { useAppDispatch } from '../../../store/typedHooks'
 
 const CreateProject = () => {
     const [projectName, setProjectName] = useState("")

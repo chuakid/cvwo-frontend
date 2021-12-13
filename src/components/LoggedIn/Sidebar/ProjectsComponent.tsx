@@ -1,4 +1,4 @@
-import { Box, Link, Skeleton, Stack } from '@chakra-ui/react'
+import { Box, Skeleton, Stack } from '@chakra-ui/react'
 import Project from '../../../types/Project'
 import { getProjects } from '../../../services/projectservices'
 import { useAppDispatch, useAppSelector } from '../../../store/typedHooks'

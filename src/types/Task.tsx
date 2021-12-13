@@ -1,5 +1,5 @@
 export default interface Task{
-    ID: number,
+    id: number,
     name: string,
     ProjectID: string
 }

@@ -1,5 +1,5 @@
 import { useToast } from '@chakra-ui/react'
-import React, { Children, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const CheckLoggedIn = ({ children, isLoggedIn }: { children: React.ReactNode, isLoggedIn: boolean }) => {
@@ -10,9 +10,9 @@ const CheckLoggedIn = ({ children, isLoggedIn }: { children: React.ReactNode, is
             navigate("/login")
             toast({ "title": "Please log in" })
         }
-    }, [isLoggedIn, navigate])
+    }, [isLoggedIn, navigate, toast])
 
-    return <>{children}</>
+    return <>{isLoggedIn ? children : null}</>
 }
 
 export default CheckLoggedIn

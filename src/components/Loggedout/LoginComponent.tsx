@@ -19,7 +19,7 @@ const LoginComponent = ({ setLoggedIn }: { setLoggedIn: React.Dispatch<React.Set
             .then((result) => {
                 setLoading(false)
                 setLoggedIn(true)
-                setJWT(result.data)
+                setJWT(result.data)               
                 navigate("/", { replace: true })
             })
             .catch(error => {
@@ -28,8 +28,8 @@ const LoginComponent = ({ setLoggedIn }: { setLoggedIn: React.Dispatch<React.Set
                     "duration": 3000,
                     "status": 'error'
                 })
-            }).finally(() => {
                 setLoading(false)
+
             })
     }
     function handleRegister() {

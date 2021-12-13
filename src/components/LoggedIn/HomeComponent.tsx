@@ -1,12 +1,14 @@
+import { Flex } from '@chakra-ui/react'
+import React from 'react'
+import { Outlet } from 'react-router-dom'
 import ProjectsComponent from './ProjectsComponent'
-import TasksComponent from './TasksComponent'
 
 const HomeComponent = () => {
     return (
-        <>
-            <ProjectsComponent />
-            <TasksComponent />
-        </>
+        <Flex>
+            <ProjectsComponent></ProjectsComponent>
+            <Outlet />
+        </Flex>
     )
 }
 

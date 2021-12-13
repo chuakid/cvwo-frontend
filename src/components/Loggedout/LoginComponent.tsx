@@ -2,20 +2,25 @@ import React, { useState } from 'react'
 import { Button, Center, Flex, FormControl, FormLabel, Stack, useToast } from "@chakra-ui/react"
 import FormInput from '../FormInput';
 import { login, register } from '../../services/userservices';
+import { setJWT } from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 
-const LoginComponent = () => {
+const LoginComponent = ({ setLoggedIn }: { setLoggedIn: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const formBg = "white"
     const toast = useToast()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate();
 
     function handleLogin() {
         setLoading(true)
         login(username, password)
             .then((result) => {
                 setLoading(false)
-                console.log(result)
+                setLoggedIn(true)
+                setJWT(result.data)
+                navigate("/", { replace: true })
             })
             .catch(error => {
                 toast({
@@ -32,7 +37,11 @@ const LoginComponent = () => {
         register(username, password)
             .then((result) => {
                 setLoading(false)
-                console.log(result)
+                toast({
+                    "title": "Registration successful, please log in.",
+                    "duration": 3000,
+                    "status": 'success'
+                })
             })
             .catch(error => {
                 toast({

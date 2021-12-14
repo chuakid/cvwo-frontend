@@ -11,7 +11,7 @@ const CreateTaskInput = ({ projectid }: { projectid: number }) => {
         createTask(projectid, taskDesc).then(
             (result) => {
                 dispatch(addTaskToProject({
-                    id: result.data.ID,
+                    id: result.data.id,
                     description: taskDesc,
                     projectid: projectid
                 } as Task))

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { SearchIcon } from '@chakra-ui/icons'
-import { Box, Divider, Flex, Input, Link, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react'
+import { Box, Divider, Flex, Input, Link, Modal, ModalBody, ModalContent, ModalOverlay, useDisclosure } from '@chakra-ui/react'
 import { useAppSelector } from '../../../store/typedHooks'
 import { Link as RouterLink } from 'react-router-dom'
 

@@ -5,9 +5,9 @@ import Sidebar from './Sidebar/Sidebar'
 
 const HomeComponent = () => {
     return (
-        <Flex flexDirection="column" height="100vh">
+        <Flex flexDirection="column" minH="100vh">
             <Navbar />
-            <Flex h="100%">
+            <Flex flex="1">
                 <Sidebar></Sidebar>
                 <Outlet />
             </Flex>

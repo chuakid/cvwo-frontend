@@ -21,7 +21,7 @@ const SearchBar = () => {
                     <Input fontSize="2xl" border="none" placeholder="Search" h="20" onInput={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} />
                     <Divider mb="3"></Divider>
                     <ModalBody>
-                        {searchedProjects.map((project) => <SearchItem closeModal={onClose} project={project} />)}
+                        {searchedProjects.map((project) => <SearchItem key={project.id} closeModal={onClose} project={project} />)}
                     </ModalBody>
                 </ModalContent>
             </Modal>

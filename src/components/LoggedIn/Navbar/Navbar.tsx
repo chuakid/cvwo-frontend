@@ -1,4 +1,3 @@
-import { SearchIcon } from '@chakra-ui/icons'
 import { Button, Flex, Text } from '@chakra-ui/react'
 import React from 'react'
 import { setJwt } from '../../../store/jwtSlice'

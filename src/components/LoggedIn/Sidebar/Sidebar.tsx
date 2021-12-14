@@ -1,7 +1,5 @@
-import { Flex, Button } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import React from 'react'
-import { setJwt } from '../../../store/jwtSlice'
-import { useAppDispatch } from '../../../store/typedHooks'
 import ProjectsComponent from './ProjectsComponent'
 
 const Sidebar = () => {

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Center, Flex, FormControl, FormLabel, Link, Stack, useToast } from "@chakra-ui/react"
 import FormInput from '../FormInput';
 import { login } from '../../services/userservices';
 import { setAPIToken } from '../../services/api';
-import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../store/typedHooks';
+import { useAppDispatch } from '../../store/typedHooks';
 import { setJwt } from '../../store/jwtSlice';
 import { Link as RouterLink } from 'react-router-dom';
 import useCheckLoggedOut from './CheckLoggedOut';

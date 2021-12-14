@@ -20,7 +20,7 @@ const CreateTaskInput = ({ projectid }: { projectid: number }) => {
 
     }
     return (
-        <Input mt="3" w="64" boxShadow="md" borderColor="gray.200" border="1px" _placeholder={{color: "gray.400"}} onKeyUp={(e) => {
+        <Input mt="3" w="64" boxShadow="md" borderColor="gray.400" border="1px" _placeholder={{color: "gray.400"}} onKeyUp={(e) => {
             if (e.key === "Enter") {
                 handleCreateTask((e.target as HTMLInputElement).value)
             }

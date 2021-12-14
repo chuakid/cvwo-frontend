@@ -5,7 +5,7 @@ import ProjectsComponent from './ProjectsComponent'
 const Sidebar = () => {
 
     return (
-        <Flex p="3" w={{ base: "30%", md: "25%", lg: "15%" }} bgColor="blue.800" flexDirection="column" justifyContent="space-between">
+        <Flex p="3" w={{ base: "100px", md: "200px", lg: "300px" }} bgColor="blue.800" flexDirection="column" justifyContent="space-between">
             <ProjectsComponent />
         </Flex>
     )

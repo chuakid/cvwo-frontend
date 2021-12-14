@@ -21,19 +21,24 @@ export const ProjectsSlice = createSlice({
             if (project && !project.Tasks) {
                 project.Tasks = []
             }
-            project?.Tasks?.push(action.payload.task)
+            project?.Tasks?.push(action.payload)
         },
-        setAllTasks(state, action) {            
+        setAllTasks(state, action) {
             for (let i = 0; i < action.payload?.length; i++) {
-                const task = action.payload[i] as Task                
+                const task = action.payload[i] as Task
                 if (!state[task.projectid].Tasks) state[task.projectid].Tasks = []
                 state[task.projectid].Tasks?.push(task)
             }
+        },
+        renameTask(state, action) {
+            const task: Task = action.payload
+            const project = state[task.projectid]
+            project.Tasks = project.Tasks?.map(x => x.id === task.id ? task : x)
         }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { setAllTasks, setProjects, addProject, addTaskToProject } = ProjectsSlice.actions
+export const { renameTask, setAllTasks, setProjects, addProject, addTaskToProject } = ProjectsSlice.actions
 
 export default ProjectsSlice.reducer

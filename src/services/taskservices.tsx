@@ -6,6 +6,11 @@ export function createTask(projectid: number, description: string) {
         description: description
     })
 }
+export function renameTask(taskid: number, description: string) {
+    return API.post("/task/" + taskid, {
+        description: description
+    })
+}
 
 export function getAllTasks(signal: AbortSignal) {
     return API.get("/tasks", { signal: signal })

@@ -3,7 +3,6 @@ import { SearchIcon } from '@chakra-ui/icons'
 import { Box, Divider, Flex, Input, Modal, ModalBody, ModalContent, ModalOverlay, useDisclosure } from '@chakra-ui/react'
 import { useAppSelector } from '../../../store/typedHooks'
 import SearchItem from './SearchItem'
-import Task from '../../../types/Task'
 
 const SearchBar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()

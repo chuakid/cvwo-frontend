@@ -60,7 +60,7 @@ const LoginComponent = () => {
                         <FormInput fn={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} type="password" />
                     </FormControl>
                     <FormControl required>
-                        <Button disabled={loading} bgColor="blue.200" _hover={{ bgColor: "blue.500", color: "white" }} onClick={handleLogin} width="100%" marginTop="2">
+                        <Button isLoading={loading} bgColor="blue.200" _hover={{ bgColor: "blue.500", color: "white" }} onClick={handleLogin} width="100%" marginTop="2">
                             Login</Button>
                         <Link as={RouterLink} color="blue.500" rounded="md" p="2" mt="2" display="inline-block" to="/register" marginTop="2"> Register</Link>
                     </FormControl>

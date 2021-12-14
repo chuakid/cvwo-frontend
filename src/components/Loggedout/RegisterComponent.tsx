@@ -58,7 +58,7 @@ const RegisterComponent = () => {
                         <FormInput fn={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} type="password" />
                     </FormControl>
                     <FormControl required>
-                        <Button disabled={loading} bgColor="red.200" _hover={{ bgColor: "red.500", color: "white" }} onClick={handleRegister} width="100%" marginTop="2">
+                        <Button isLoading={loading} bgColor="red.200" _hover={{ bgColor: "red.500", color: "white" }} onClick={handleRegister} width="100%" marginTop="2">
                             Register</Button>
                         <Link as={RouterLink} color="blue.500" rounded="md" p="2" mt="2" display="inline-block" to="/login" marginTop="2"> Login</Link>
                     </FormControl>

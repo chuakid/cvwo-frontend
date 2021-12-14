@@ -18,13 +18,14 @@ const ProjectComponent = () => {
             navigate("/");
         }
     }, [project, navigate])
-
+    const sortedTasks = project.Tasks?.map(x => x)
+        .sort((a, b) => { return a.completed && b.completed ? 0 : a.completed ? 1 : -1 })
 
     return (
         <Box flex="1" p="3">
             <CreateTaskInput projectid={project ? project.id : -1} />
             <Wrap mt="2">
-                {project?.Tasks?.map((task) => <WrapItem key={task.id}><TaskComponent task={task}></TaskComponent></WrapItem>)}
+                {sortedTasks?.map((task) => <WrapItem key={task.id}><TaskComponent task={task}></TaskComponent></WrapItem>)}
             </Wrap>
         </Box>
     )

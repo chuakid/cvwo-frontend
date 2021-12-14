@@ -15,3 +15,9 @@ export function renameTask(taskid: number, description: string) {
 export function getAllTasks(signal: AbortSignal) {
     return API.get("/tasks", { signal: signal })
 }
+
+export function setTaskCompletion(taskid: number, completion: boolean) {
+    return API.patch("/task/" + taskid + "/check" , {
+        "completed": completion
+    })
+}

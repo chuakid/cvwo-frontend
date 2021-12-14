@@ -1,5 +1,6 @@
 export default interface Task{
     id: number,
     description: string,
-    projectid: number
+    projectid: number,
+    completed: boolean
 }

@@ -24,7 +24,7 @@ export const ProjectsSlice = createSlice({
             project?.Tasks?.push(action.payload.task)
         },
         setAllTasks(state, action) {            
-            for (let i = 0; i < action.payload.length; i++) {
+            for (let i = 0; i < action.payload?.length; i++) {
                 const task = action.payload[i] as Task                
                 if (!state[task.projectid].Tasks) state[task.projectid].Tasks = []
                 state[task.projectid].Tasks?.push(task)

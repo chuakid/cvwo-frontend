@@ -7,7 +7,7 @@ import { Link as RouterLink } from 'react-router-dom'
 const SearchBar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [search, setSearch] = useState("")
-    let projects = useAppSelector(state => state.projects.filter((project) => project.name.includes(search)))
+    let projects = useAppSelector(state => Object.values(state.projects).filter((project) => project.name.includes(search)))
 
     return (
         <>
@@ -22,7 +22,7 @@ const SearchBar = () => {
                     <Input fontSize="2xl" border="none" placeholder="Search" onInput={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} />
                     <Divider mb="3"></Divider>
                     <ModalBody>
-                        {projects.map((project) => <Link onClick={onClose} rounded="lg" _hover={{ bgColor: "blue.600", color: "white" }} as={RouterLink} display="block" fontSize="2xl" bgColor="gray.200" mb="2" p="2" width="100%"
+                        {projects.map((project) => <Link key={project.id} onClick={onClose} rounded="lg" _hover={{ bgColor: "blue.600", color: "white" }} as={RouterLink} display="block" fontSize="2xl" bgColor="gray.200" mb="2" p="2" width="100%"
                             to={"/project/" + project.id}>{project.name}</Link>)}
                     </ModalBody>
                 </ModalContent>

@@ -3,24 +3,32 @@ import Project from '../../../types/Project'
 import { getProjects } from '../../../services/projectservices'
 import { useAppDispatch, useAppSelector } from '../../../store/typedHooks'
 import { useEffect, useState } from 'react'
-import { setProjects } from '../../../store/projectSlice'
+import { setAllTasks, setProjects } from '../../../store/projectSlice'
 import { AxiosError } from 'axios'
 import CreateProject from './CreateProject'
 import ProjectLink from './ProjectLink'
+import { getAllTasks } from '../../../services/taskservices'
 
 const ProjectsComponent = () => {
     const [loading, setLoading] = useState(true)
-    const projects = useAppSelector(state => state.projects)
+    const projects = useAppSelector(state => Object.values(state.projects))
     const dispatch = useAppDispatch()
 
     useEffect(() => {
         const controller = new AbortController()
+
         getProjects(controller.signal)
             .then((result) => {
                 dispatch(setProjects(result.data))
+            })
+            .then(() => getAllTasks(controller.signal))
+            .then((result) => {
+                dispatch(setAllTasks(result.data))
             }).catch((error: AxiosError) => {
                 console.log(error);
             }).finally(() => setLoading(false))
+
+
         return () => {
             controller.abort()
         }

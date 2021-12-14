@@ -7,3 +7,7 @@ export function getProjects(signal: AbortSignal) {
 export function createProject(name: string) {
     return API.post("/project", { name })
 }
+
+export function getProject(id: number) {
+    return API.get("/project/" + id)
+}

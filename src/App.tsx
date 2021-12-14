@@ -3,14 +3,13 @@ import RegisterComponent from './components/Loggedout/RegisterComponent';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Box } from '@chakra-ui/react';
-import ProjectComponent from './components/LoggedIn/ProjectComponent';
+import ProjectComponent from './components/LoggedIn/Project/ProjectComponent';
 import HomeComponent from './components/LoggedIn/HomeComponent';
 import NoTaskSelectedComponent from './components/LoggedIn/NoProjectSelectedComponent';
 import { useAppDispatch } from './store/typedHooks';
 import { setJwt } from './store/jwtSlice';
 import CheckLoggedIn from './components/LoggedIn/CheckLoggedIn';
 import { setAPIToken } from './services/api';
-import CheckLoggedOut from './components/Loggedout/CheckLoggedOut';
 
 function App() {
   const dispatch = useAppDispatch()

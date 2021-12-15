@@ -33,16 +33,17 @@ const TaskComponent = ({ task }: { task: Task }) => {
             }).catch(e => console.log(e))
     }
     const taskstyles = {
-        bgColor: task.completed ? "gray.100" : "blue.100",
+        bgColor: "blue.700",
+        color: "white",
         opacity: task.completed ? "0.5" : "1",
         borderColor: "gray.400",
-        border: "1px",
+        border: "none",
         boxShadow: "md",
         rounded: "lg"
     }
 
     return (
-        <Flex p="2" boxShadow={taskstyles.boxShadow} border={taskstyles.border} borderColor={taskstyles.borderColor} opacity={taskstyles.opacity} bgColor={taskstyles.bgColor} rounded={taskstyles.rounded} flexDirection="column" justifyContent="space-between" minH="100px" maxW="300px" >
+        <Flex p="2" color={taskstyles.color} boxShadow={taskstyles.boxShadow} border={taskstyles.border} borderColor={taskstyles.borderColor} opacity={taskstyles.opacity} bgColor={taskstyles.bgColor} rounded={taskstyles.rounded} flexDirection="column" justifyContent="space-between" minH="100px" maxW="300px" >
             <Editable as="h3" fontSize="xl" defaultValue={task.description} onSubmit={rename}>
                 <EditablePreview wordBreak="break-all" />
                 <EditableInput />

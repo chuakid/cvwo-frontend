@@ -46,7 +46,7 @@ const SearchBar = () => {
                     </Flex>
                     <Divider mb="3"></Divider>
                     <ModalBody px="3">
-                        {searchedProjects.map((project, index) => <SearchItem key={project.id} selected={index === selected} closeModal={onClose} project={project} />)}
+                        {searchedProjects.map((project, index) => <SearchItem key={project.id} setSelected={setSelected} index={index} selected={index === selected} closeModal={onClose} project={project} />)}
                     </ModalBody>
                 </ModalContent>
             </Modal>

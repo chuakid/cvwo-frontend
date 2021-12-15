@@ -32,10 +32,19 @@ const TaskComponent = ({ task }: { task: Task }) => {
                 }))
             }).catch(e => console.log(e))
     }
+    const taskstyles = {
+        bgColor: task.completed ? "gray.100" : "blue.100",
+        opacity: task.completed ? "0.5" : "1",
+        borderColor: "gray.400",
+        border: "1px",
+        boxShadow: "md",
+        rounded: "lg"
+    }
+
     return (
-        <Flex p="2" boxShadow="lg" border="1px" borderColor="gray.400" bgColor={task.completed ? "gray.100" : "blue.100"} minH="100px" maxW="300px" rounded="lg" flexDirection="column" justifyContent="space-between">
+        <Flex p="2" boxShadow={taskstyles.boxShadow} border={taskstyles.border} borderColor={taskstyles.borderColor} opacity={taskstyles.opacity} bgColor={taskstyles.bgColor} rounded={taskstyles.rounded} flexDirection="column" justifyContent="space-between" minH="100px" maxW="300px" >
             <Editable as="h3" fontSize="xl" defaultValue={task.description} onSubmit={rename}>
-                <EditablePreview wordBreak="break-all"/>
+                <EditablePreview wordBreak="break-all" />
                 <EditableInput />
             </Editable>
             <Button onClick={toggleCompleted} bgColor={task.completed ? "red.300" : "blue.300"} _hover={{ bgColor: "red.700" }} color="white" fontSize="12" h="7" px="2" py="1">Mark As {task.completed ? "Not Done" : "Done"}</Button>

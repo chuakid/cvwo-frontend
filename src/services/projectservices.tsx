@@ -11,3 +11,7 @@ export function createProject(name: string) {
 export function getProject(id: number) {
     return API.get("/project/" + id)
 }
+
+export function deleteProject(id: number) {
+    return API.delete("/project/" + id)
+}

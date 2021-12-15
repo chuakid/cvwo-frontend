@@ -15,7 +15,7 @@ const Navbar = () => {
         dispatch(setJwt(""))
     }
     return (
-        <Flex bgColor="gray.700" as="nav" px="4" py="2" justifyContent="space-between" cursor="pointer">
+        <Flex bgColor="gray.700" as="nav" px="4" py="2" justifyContent="space-between" >
             <Text as={Link} to="/" fontSize="3xl" color="white">TewDew</Text>
             <SearchBar></SearchBar>
             <HStack>

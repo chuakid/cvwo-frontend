@@ -32,8 +32,8 @@ const SearchBar = () => {
 
     return (
         <>
-            <Flex onClick={onOpen} alignItems="center" bgColor="gray.800" rounded="lg" px="3" w="50%">
-                <SearchIcon mr="2"></SearchIcon>
+            <Flex cursor="pointer" onClick={onOpen} alignItems="center" bgColor="gray.800" rounded="lg" px="3" w="50%">
+                <SearchIcon mr="2" color="white"></SearchIcon>
                 <Box color="white" fontSize="xl">Search Projects</Box>
             </Flex>
 

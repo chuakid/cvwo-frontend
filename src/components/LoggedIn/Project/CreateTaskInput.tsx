@@ -16,13 +16,14 @@ const CreateTaskInput = ({ projectid }: { projectid: number }) => {
                     description: task,
                     projectid: projectid
                 } as Task))
-            }
-        )
+            })
+            .catch(e => console.log(e))
+        setTask("")
 
     }
     return (
         <InputGroup width="auto" boxShadow="lg">
-            <Input w="64"  _placeholder={{ color: "gray.400" }} onInput={(e) => {
+            <Input w="64" _placeholder={{ color: "gray.400" }} value={task} onInput={(e) => {
                 setTask(e.currentTarget.value)
             }} onKeyUp={(e) => {
                 if (e.key === "Enter") {

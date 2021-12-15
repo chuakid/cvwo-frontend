@@ -14,11 +14,12 @@ const CreateProject = () => {
                 dispatch(addProject(result.data))
             })
             .catch((e) => console.log(e))
+        setProjectName("")
 
     }
     return (
         <Box pt="3">
-            <Input placeholder='Project Name' h="30px" onInput={(e: React.ChangeEvent<HTMLInputElement>) => setProjectName(e.target.value)} w="100%"></Input>
+            <Input placeholder='Project Name' h="30px" onInput={(e: React.ChangeEvent<HTMLInputElement>) => setProjectName(e.target.value)} value={projectName} w="100%"></Input>
             <Button colorScheme="blue" w="100%" mt="3" onClick={handleCreateProject}>Create Project</Button>
         </Box>
     )

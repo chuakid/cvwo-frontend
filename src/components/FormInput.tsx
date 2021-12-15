@@ -8,12 +8,21 @@ interface FormData {
 }
 
 const FormInput = (data: FormData) => {
-    const hoverBg = useColorModeValue('gray.200', 'gray.600');
+    const styles = useColorModeValue({
+        hoverBg: "gray.200",
+        bg: 'gray.100',
+        borderColor: "gray.300"
+    }, {
+        hoverBg: "gray.500",
+        bg: "gray.600",
+        borderColor: "gray.400"
+    })
     const bg = useColorModeValue('gray.100', 'gray.700');
+
 
     return (
         <>
-            <Input type={data.type} onInput={data.fn} isRequired _hover={{ bgColor: hoverBg }} bgColor={bg} borderColor="gray.300" rounded="md" />
+            <Input type={data.type} onInput={data.fn} isRequired _hover={{ bgColor: styles.hoverBg }} bgColor={styles.bg} borderColor={styles.borderColor} rounded="md" />
         </>
 
     )

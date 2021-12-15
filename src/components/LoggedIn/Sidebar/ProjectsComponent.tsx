@@ -1,4 +1,4 @@
-import { Box, Divider, Heading, Skeleton, Stack } from '@chakra-ui/react'
+import { Box, Divider, Heading, Skeleton, Stack, useColorModeValue } from '@chakra-ui/react'
 import Project from '../../../types/Project'
 import { getProjects } from '../../../services/projectservices'
 import { useAppDispatch, useAppSelector } from '../../../store/typedHooks'
@@ -36,7 +36,7 @@ const ProjectsComponent = () => {
 
     return (
         <Box>
-            <Heading color="white" mb="2" fontSize="2xl">PROJECTS</Heading>
+            <Heading mb="2" fontSize="2xl">PROJECTS</Heading>
             <Divider></Divider>
             {loading || <Skeleton />}
             <Stack>

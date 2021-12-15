@@ -1,4 +1,5 @@
-import { Button, Flex, Text } from '@chakra-ui/react'
+import { MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { HStack, Button, Flex, Text, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { setJwt } from '../../../store/jwtSlice'
@@ -7,15 +8,20 @@ import SearchBar from './SearchBar'
 
 const Navbar = () => {
     const dispatch = useAppDispatch()
+    const colorIcon = useColorModeValue(<SunIcon />, <MoonIcon />)
+    const { toggleColorMode } = useColorMode()
     function handleLogout() {
-        localStorage.setItem("jwt", "");
+        localStorage.setItem("jwt", "")
         dispatch(setJwt(""))
     }
     return (
-        <Flex bgColor="blue.500" as="nav" px="4" py="2" justifyContent="space-between" cursor="pointer">
+        <Flex bgColor="gray.700" as="nav" px="4" py="2" justifyContent="space-between" cursor="pointer">
             <Text as={Link} to="/" fontSize="3xl" color="white">TewDew</Text>
             <SearchBar></SearchBar>
-            <Button onClick={handleLogout} _hover={{ bgColor: "gray.300" }} mb="2" mx="2">Logout</Button>
+            <HStack>
+                <Button colorScheme="gray" onClick={toggleColorMode}>{colorIcon}</Button>
+                <Button colorScheme="gray" onClick={handleLogout} mb="2" mx="2">Logout</Button>
+            </HStack>
 
         </Flex>
     )

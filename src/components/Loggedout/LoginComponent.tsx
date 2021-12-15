@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Center, Flex, FormControl, FormLabel, Link, Stack, useToast } from "@chakra-ui/react"
+import { Button, Center, Flex, FormControl, FormLabel, Link, Stack, useColorModeValue, useToast } from "@chakra-ui/react"
 import FormInput from '../FormInput';
 import { login } from '../../services/userservices';
 import { setAPIToken } from '../../services/api';
@@ -9,7 +9,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import useCheckLoggedOut from './CheckLoggedOut';
 
 const LoginComponent = () => {
-    const formBg = "white"
+    const styles = useColorModeValue({ formBg: "gray.100", borderColor:"gray.300" }, { formBg: "gray.700", borderColor:"gray.700" })
     const toast = useToast()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -49,7 +49,7 @@ const LoginComponent = () => {
 
     return (
         <Center h="100vh">
-            <Flex as="form" rounded="md" padding="5" backgroundColor={formBg} boxShadow="lg" border="1px" borderColor="gray.200">
+            <Flex as="form" background={styles.formBg} rounded="md" padding="5" boxShadow="lg" border="1px" borderColor={styles.borderColor}>
                 <Stack>
                     <FormControl required>
                         <FormLabel>Username</FormLabel>
@@ -60,9 +60,9 @@ const LoginComponent = () => {
                         <FormInput fn={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} type="password" />
                     </FormControl>
                     <FormControl required>
-                        <Button isLoading={loading} bgColor="blue.200" _hover={{ bgColor: "blue.500", color: "white" }} onClick={handleLogin} width="100%" marginTop="2">
+                        <Button isLoading={loading} bgColor="blue.400" _hover={{ bgColor: "blue.500", color: "white" }} onClick={handleLogin} width="100%" marginTop="2">
                             Login</Button>
-                        <Link as={RouterLink} color="blue.500" rounded="md" p="2" mt="2" display="inline-block" to="/register" marginTop="2"> Register</Link>
+                        <Link as={RouterLink} color="blue.400" rounded="md" p="2" mt="2" display="inline-block" to="/register" marginTop="2"> Register</Link>
                     </FormControl>
 
                 </Stack>

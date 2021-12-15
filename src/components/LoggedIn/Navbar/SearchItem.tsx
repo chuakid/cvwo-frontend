@@ -5,12 +5,11 @@ import Project from '../../../types/Project'
 
 const SearchItem = ({ closeModal, project, selected, setSelected, index }: { closeModal: React.MouseEventHandler<HTMLAnchorElement>, project: Project, selected: boolean, setSelected: Function, index: number }) => {
     const styles = {
-        bgColor: selected ? "blue.600" : "gray.200",
-        color: selected ? "white" : "black"
+        bgColor: selected ? "blue.600" : "tranparent",
     }
     return (
         <LinkBox onMouseEnter={() => setSelected(index)}>
-            <LinkOverlay key={project.id} onClick={closeModal} rounded="lg" as={RouterLink} display="block" fontSize="2xl" color={styles.color} bgColor={styles.bgColor} mb="2" p="2" width="100%"
+            <LinkOverlay key={project.id} onClick={closeModal} rounded="lg" as={RouterLink} display="block" fontSize="2xl" bgColor={styles.bgColor} mb="2" p="2" width="100%"
                 to={"/project/" + project.id}>{project.name}
             </LinkOverlay></LinkBox>
     )

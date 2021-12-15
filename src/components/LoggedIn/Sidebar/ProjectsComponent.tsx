@@ -1,13 +1,8 @@
-import { Box, Divider, Heading, Skeleton, Stack } from '@chakra-ui/react'
+import { Box, Divider, Heading, Stack } from '@chakra-ui/react'
+import { useAppSelector } from '../../../store/typedHooks'
 import Project from '../../../types/Project'
-import { getProjects } from '../../../services/projectservices'
-import { useAppDispatch, useAppSelector } from '../../../store/typedHooks'
-import { useEffect, useState } from 'react'
-import { setAllTasks, setProjects } from '../../../store/projectSlice'
-import { AxiosError } from 'axios'
 import CreateProject from './CreateProject'
 import ProjectLink from './ProjectLink'
-import { getAllTasks } from '../../../services/taskservices'
 
 const ProjectsComponent = () => {
     const projects = useAppSelector(state => Object.values(state.projects))

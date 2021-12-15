@@ -1,4 +1,4 @@
-import { Button, Input, InputGroup, InputRightAddon } from '@chakra-ui/react'
+import { Button, Input, InputGroup, InputRightAddon, useToast } from '@chakra-ui/react'
 import { createTask } from '../../../services/taskservices'
 import React, { useState } from 'react'
 import { useAppDispatch } from '../../../store/typedHooks'
@@ -8,7 +8,15 @@ import Task from '../../../types/Task'
 const CreateTaskInput = ({ projectid }: { projectid: number }) => {
     const dispatch = useAppDispatch()
     const [task, setTask] = useState("")
+    const toast = useToast()
     function handleCreateTask() {
+        if(task === "") {
+            toast({
+                description: "Please enter a task name",
+                status: "error"
+            })
+            return
+        }
         createTask(projectid, task).then(
             (result) => {
                 dispatch(addTaskToProject({

@@ -17,8 +17,6 @@ const FormInput = (data: FormData) => {
         bg: "gray.600",
         borderColor: "gray.400"
     })
-    const bg = useColorModeValue('gray.100', 'gray.700');
-
 
     return (
         <>

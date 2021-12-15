@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { SearchIcon } from '@chakra-ui/icons'
-import { Box, Divider, Flex, Input, Modal, ModalBody, ModalContent, ModalOverlay, useDisclosure } from '@chakra-ui/react'
+import { Box, Divider, Flex, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalContent, ModalOverlay, useDisclosure } from '@chakra-ui/react'
 import { useAppSelector } from '../../../store/typedHooks'
 import SearchItem from './SearchItem'
 import { useNavigate } from 'react-router-dom'
@@ -40,10 +40,12 @@ const SearchBar = () => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <Flex alignItems="center">
-                        <SearchIcon ml="2" h="6" w="6" />
-                        <Input _focus={{ outline: "none" }} flex="1" fontSize="2xl" border="none" placeholder="Search" rounded="none" py="7" value={search} onInput={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} onKeyUp={handleKeyUp} />
-                    </Flex>
+                    <InputGroup size="lg">
+                        <InputLeftElement children={
+                            <SearchIcon />
+                        } />
+                        <Input _focus={{ outline: "none" }} fontSize="2xl" border="none" placeholder="Search" rounded="none" value={search} onInput={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} onKeyUp={handleKeyUp} />
+                    </InputGroup>
                     <Divider mb="3"></Divider>
                     <ModalBody px="3">
                         {searchedProjects.map((project, index) => <SearchItem key={project.id} setSelected={setSelected} index={index} selected={index === selected} closeModal={onClose} project={project} />)}

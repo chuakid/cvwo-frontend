@@ -48,7 +48,7 @@ const TaskComponent = ({ task }: { task: Task }) => {
                 <EditablePreview wordBreak="break-all" />
                 <EditableInput />
             </Editable>
-            <Button onClick={toggleCompleted} bgColor={task.completed ? "red.300" : "blue.300"} _hover={{ bgColor: "red.700" }} color="white" fontSize="12" h="7" px="2" py="1">Mark As {task.completed ? "Not Done" : "Done"}</Button>
+            <Button onClick={toggleCompleted} colorScheme={task.completed ? "red" : "blue"} fontSize="12" h="7" px="2" py="1">Mark As {task.completed ? "Not Done" : "Done"}</Button>
         </Flex>
     )
 }

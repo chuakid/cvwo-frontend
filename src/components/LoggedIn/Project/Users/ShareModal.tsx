@@ -2,7 +2,7 @@ import { List, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOv
 import React from 'react'
 import Project from '../../../../types/Project'
 import AddUserComponent from './AddUserComponent'
-import UserComponent from './UserComponent'
+import MemberListItem from './MemberListItem'
 
 const ShareModal = ({ project, isOpen, onClose, isOwner }: { project: Project, isOpen: boolean, onClose: VoidFunction, isOwner: boolean }) => {
     return (
@@ -14,7 +14,7 @@ const ShareModal = ({ project, isOpen, onClose, isOwner }: { project: Project, i
                 </ModalHeader>
                 <ModalBody>
                     <List>
-                        {project?.users?.map(user => <UserComponent key={user.username} user={user} />)}
+                        {project?.users?.map(user => <MemberListItem key={user.username} isOwner={isOwner} user={user} />)}
                     </List>
                 </ModalBody>
                 <ModalFooter>

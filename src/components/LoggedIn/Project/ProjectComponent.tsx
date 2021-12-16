@@ -31,7 +31,7 @@ const ProjectComponent = () => {
         .sort((a, b) => { return a.completed && b.completed ? 0 : a.completed ? 1 : -1 }) || []
 
     const curUser = useAppSelector(state => state.user.username)
-    const isOwner = project.users?.find((x) => x.username === curUser)?.role === 1
+    const isOwner = project?.users?.find((x) => x.username === curUser)?.role === 1
 
     return (
         <Flex flexDirection="column" flex="1" p="3">

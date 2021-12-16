@@ -8,7 +8,9 @@ const AddUserComponent = ({ projectid }: { projectid: number }) => {
     const toast = useToast()
     const dispatch = useAppDispatch()
     const [username, setUsername] = useState("")
+    const [loading, setLoading] = useState(false)
     function handleAddUser() {
+        setLoading(true)
         addUserToProject(projectid, username).then(result => {
             setUsername("")
             dispatch(storeAddUserToProject({ projectid, username }))
@@ -17,6 +19,8 @@ const AddUserComponent = ({ projectid }: { projectid: number }) => {
                 "description": "User not found or already added",
                 "status": "error"
             })
+        }).finally(() => {
+            setLoading(false)
         })
     }
 
@@ -24,7 +28,7 @@ const AddUserComponent = ({ projectid }: { projectid: number }) => {
         <Flex mt="2">
             <InputGroup size="sm" rounded="lg">
                 <Input onInput={(e) => setUsername(e.currentTarget.value)} value={username} placeholder="Add other users" />
-                <InputRightAddon onClick={handleAddUser} as={Button}>Add</InputRightAddon>
+                <InputRightAddon isLoading={loading} onClick={handleAddUser} as={Button}>Add</InputRightAddon>
             </InputGroup>
         </Flex>
     )

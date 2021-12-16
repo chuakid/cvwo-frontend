@@ -4,10 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getProject } from '../../../services/projectservices';
 import { editProject } from '../../../store/projectSlice';
 import { useAppDispatch, useAppSelector } from '../../../store/typedHooks';
-import CreateTaskInput from './CreateTaskInput';
+import CreateTaskInput from './Task/CreateTaskInput';
 import DeleteProjectButton from './DeleteProjectButton';
 import NoTasksComponent from './NoTasksComponent';
-import TaskComponent from './TaskComponent';
+import TaskComponent from './Task/TaskComponent';
 import UsersComponent from './Users/UsersComponent';
 
 const ProjectComponent = () => {

@@ -1,15 +1,14 @@
-import { DeleteIcon } from '@chakra-ui/icons'
-import { Button, Editable, EditableInput, EditablePreview, Flex, useToast } from '@chakra-ui/react'
-import { deleteTask, renameTask, setTaskCompletion } from '../../../services/taskservices'
-import { editTask, deleteTask as storeDeleteTask } from '../../../store/projectSlice'
-import { useAppDispatch } from '../../../store/typedHooks'
+import { Editable, EditableInput, EditablePreview, Flex } from '@chakra-ui/react'
+import { renameTask } from '../../../../services/taskservices'
+import { editTask } from '../../../../store/projectSlice'
+import { useAppDispatch } from '../../../../store/typedHooks'
+import Task from '../../../../types/Task'
+import DeleteButton from './DeleteButton'
+import MarkAsDoneButton from './MarkAsDoneButton'
 
-import Task from '../../../types/Task'
 
 const TaskComponent = ({ task }: { task: Task }) => {
-    const toast = useToast()
     const dispatch = useAppDispatch()
-
     function rename(nextValue: string) {
         renameTask(task.id, nextValue)
             .then((result) => {
@@ -20,27 +19,6 @@ const TaskComponent = ({ task }: { task: Task }) => {
                     completed: task.completed
                 } as Task))
             }).catch(e => console.log(e))
-    }
-
-    function toggleCompleted() {
-        setTaskCompletion(task.id, !task.completed)
-            .then((result) => {
-                dispatch(editTask({
-                    id: task.id,
-                    description: task.description,
-                    projectid: task.projectid,
-                    completed: !task.completed
-                }))
-            }).catch(e => console.log(e))
-    }
-
-    function handleDelete() {
-        deleteTask(task.id).then(result => {
-            dispatch(storeDeleteTask(task))
-            toast({
-                description: "Task deleted"
-            })
-        }).catch(e => console.log(e))
     }
     const taskstyles = {
         bgColor: "blue.700",
@@ -59,9 +37,9 @@ const TaskComponent = ({ task }: { task: Task }) => {
                     <EditablePreview wordBreak="break-all" />
                     <EditableInput />
                 </Editable>
-                <Button onClick={handleDelete} size="xs" ml="5" colorScheme="red"><DeleteIcon /></Button>
+                <DeleteButton task={task} />
             </Flex>
-            <Button onClick={toggleCompleted} colorScheme={task.completed ? "red" : "blue"} fontSize="12" h="7" px="2" py="1">Mark As {task.completed ? "Not Done" : "Done"}</Button>
+            <MarkAsDoneButton task={task} />
         </Flex>
     )
 }

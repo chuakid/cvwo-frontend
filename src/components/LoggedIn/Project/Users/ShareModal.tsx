@@ -4,9 +4,7 @@ import Project from '../../../../types/Project'
 import AddUserComponent from './AddUserComponent'
 import UserComponent from './UserComponent'
 
-const ShareModal = ({ project, isOpen, onClose }: { project: Project, isOpen: boolean, onClose: VoidFunction }) => {
-    console.log(project);
-    
+const ShareModal = ({ project, isOpen, onClose }: { project: Project, isOpen: boolean, onClose: VoidFunction }) => {   
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
@@ -16,9 +14,9 @@ const ShareModal = ({ project, isOpen, onClose }: { project: Project, isOpen: bo
                 </ModalHeader>
                 <ModalBody>
                     <List>
-                        {project.users?.map(user => <UserComponent key={user.username} user={user} />)}
+                        {project?.users?.map(user => <UserComponent key={user.username} user={user} />)}
                     </List>
-                    <AddUserComponent projectid={project.id} />
+                    <AddUserComponent projectid={project?.id} />
                 </ModalBody>
             </ModalContent>
         </Modal>

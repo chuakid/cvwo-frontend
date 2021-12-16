@@ -12,11 +12,14 @@ export const UserSlice = createSlice({
         },
         setUsername: (state, action) => {
             state.username = action.payload
+        },
+        clear(state) {
+            return {token: "", username: ""}
         }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { setJwt, setUsername } = UserSlice.actions
+export const { clear, setJwt, setUsername } = UserSlice.actions
 
 export default UserSlice.reducer

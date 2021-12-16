@@ -2,17 +2,14 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { HStack, Button, Flex, Text, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { setJwt } from '../../../store/userSlice'
-import { useAppDispatch } from '../../../store/typedHooks'
 import SearchBar from './SearchBar'
+import { logout } from '../../../helpers/userhelpers'
 
 const Navbar = () => {
-    const dispatch = useAppDispatch()
     const colorIcon = useColorModeValue(<SunIcon />, <MoonIcon />)
     const { toggleColorMode } = useColorMode()
     function handleLogout() {
-        localStorage.setItem("jwt", "")
-        dispatch(setJwt(""))
+        logout()
     }
     return (
         <Flex bgColor="gray.700" as="nav" px="4" py="2" justifyContent="space-between" >

@@ -55,11 +55,14 @@ export const ProjectsSlice = createSlice({
                 username: action.payload.username,
                 role: 2
             })
+        }, 
+        clear(state) {
+            return {}
         }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { addUserToProject, editProject, deleteTask, deleteProject, editTask, setAllTasks, setProjects, addProject, addTaskToProject } = ProjectsSlice.actions
+export const {clear, addUserToProject, editProject, deleteTask, deleteProject, editTask, setAllTasks, setProjects, addProject, addTaskToProject } = ProjectsSlice.actions
 
 export default ProjectsSlice.reducer

@@ -17,7 +17,11 @@ export function getAllTasks(signal: AbortSignal) {
 }
 
 export function setTaskCompletion(taskid: number, completion: boolean) {
-    return API.patch("/task/" + taskid + "/check" , {
+    return API.patch("/task/" + taskid + "/check", {
         "completed": completion
     })
+}
+
+export function deleteTask(taskid: number) {
+    return API.delete("/task/" + taskid)
 }

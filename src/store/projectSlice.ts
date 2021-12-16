@@ -25,7 +25,7 @@ export const ProjectsSlice = createSlice({
         },
         setAllTasks(state, action) {
             for (let i = 0; i < action.payload?.length; i++) {
-                const task = action.payload[i] as Task                
+                const task = action.payload[i] as Task
                 if (!state[task.projectid].Tasks) state[task.projectid].Tasks = []
                 state[task.projectid].Tasks?.push(task)
             }
@@ -38,11 +38,17 @@ export const ProjectsSlice = createSlice({
         deleteProject(state, action) {
             const id = action.payload
             delete state[id]
+        },
+        deleteTask(state, action) {
+            const task: Task = action.payload
+            const project = state[task.projectid]            
+            project.Tasks = project.Tasks?.filter(x => x.id !== task.id)
+
         }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { deleteProject, editTask, setAllTasks, setProjects, addProject, addTaskToProject } = ProjectsSlice.actions
+export const { deleteTask, deleteProject, editTask, setAllTasks, setProjects, addProject, addTaskToProject } = ProjectsSlice.actions
 
 export default ProjectsSlice.reducer

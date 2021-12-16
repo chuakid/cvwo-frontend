@@ -4,11 +4,11 @@ import { useAppSelector } from '../../store/typedHooks';
 
 export default function useCheckLoggedOut() {
     const navigate = useNavigate();
-    const jwt = useAppSelector(state => state.jwt)
+    const token = useAppSelector(state => state.user.token)
     useEffect(() => {
-        if (jwt !== "") {
+        if (token !== "") {
             navigate("/")
         }
-    }, [jwt, navigate])
+    }, [token, navigate])
 }
 

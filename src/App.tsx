@@ -6,17 +6,15 @@ import { Box } from '@chakra-ui/react';
 import ProjectComponent from './components/LoggedIn/Project/ProjectComponent';
 import HomeComponent from './components/LoggedIn/HomeComponent';
 import NoTaskSelectedComponent from './components/LoggedIn/NoProjectSelectedComponent';
-import { useAppDispatch } from './store/typedHooks';
-import { setJwt } from './store/jwtSlice';
 import CheckLoggedIn from './components/LoggedIn/CheckLoggedIn';
-import { setAPIToken } from './services/api';
+import { setAppToken, setAppUsername } from './helpers/userhelpers';
 
 function App() {
-  const dispatch = useAppDispatch()
-  let token = localStorage.getItem("jwt")
-  if (token) {
-    dispatch(setJwt(token))
-    setAPIToken(token)
+  const token = localStorage.getItem("jwt")
+  const username = localStorage.getItem("username")
+  if (token && username) {
+    setAppUsername(username)
+    setAppToken(token)
   }
 
   return (

@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../store/typedHooks'
 
 const CheckLoggedIn = ({ children }: { children: ReactNode }) => {
-    const jwt = useAppSelector(state => state.jwt)
+    const token = useAppSelector(state => state.user.token)
     const navigate = useNavigate()
     useEffect(() => {
-        if (jwt === "") {
+        if (token === "") {
             navigate("/login")
         }
-    }, [jwt, navigate])
+    }, [token, navigate])
     return (
         <> {children} </>
     )

@@ -2,7 +2,7 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { HStack, Button, Flex, Text, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { setJwt } from '../../../store/jwtSlice'
+import { setJwt } from '../../../store/userSlice'
 import { useAppDispatch } from '../../../store/typedHooks'
 import SearchBar from './SearchBar'
 

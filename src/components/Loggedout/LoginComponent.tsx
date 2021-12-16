@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import { Button, Center, Flex, FormControl, FormLabel, Link, Stack, useColorModeValue, useToast } from "@chakra-ui/react"
 import FormInput from '../FormInput';
 import { login } from '../../services/userservices';
-import { setAPIToken } from '../../services/api';
 import { useAppDispatch } from '../../store/typedHooks';
-import { setJwt } from '../../store/jwtSlice';
 import { Link as RouterLink } from 'react-router-dom';
 import useCheckLoggedOut from './CheckLoggedOut';
+import { setAppToken, setAppUsername } from '../../helpers/userhelpers';
 
 const LoginComponent = () => {
     const styles = useColorModeValue({ formBg: "gray.100", borderColor:"gray.300" }, { formBg: "gray.700", borderColor:"gray.700" })
@@ -31,9 +30,8 @@ const LoginComponent = () => {
         login(username, password)
             .then((result) => {
                 setLoading(false)
-                setAPIToken(result.data)
-                dispatch(setJwt(result.data))
-                localStorage.setItem("jwt", result.data)
+                setAppToken(result.data)
+                setAppUsername(username)
             })
             .catch(error => {
                 toast({

@@ -9,7 +9,7 @@ export const ProjectsSlice = createSlice({
         setProjects: (state, action) => {
             for (let i = 0; i < action.payload.length; i++) {
                 const project: Project = action.payload[i]
-                state[project.id] = {...state[project.id], ...project} //prevent overriding when visiing /project/{projectid}
+                state[project.id] = { ...state[project.id], ...project } //prevent overriding when visiing /project/{projectid}
             }
         },
         addProject: (state, action) => {
@@ -24,9 +24,11 @@ export const ProjectsSlice = createSlice({
             project?.tasks?.push(action.payload)
         },
         setAllTasks(state, action) {
+            for (let i in state) {
+                state[i].tasks = []
+            }
             for (let i = 0; i < action.payload?.length; i++) {
                 const task = action.payload[i] as Task
-                state[task.projectid].tasks = []
                 state[task.projectid].tasks?.push(task)
             }
         },
@@ -55,7 +57,7 @@ export const ProjectsSlice = createSlice({
                 username: action.payload.username,
                 role: 2
             })
-        }, 
+        },
         clear(state) {
             return {}
         }
@@ -63,6 +65,6 @@ export const ProjectsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {clear, addUserToProject, editProject, deleteTask, deleteProject, editTask, setAllTasks, setProjects, addProject, addTaskToProject } = ProjectsSlice.actions
+export const { clear, addUserToProject, editProject, deleteTask, deleteProject, editTask, setAllTasks, setProjects, addProject, addTaskToProject } = ProjectsSlice.actions
 
 export default ProjectsSlice.reducer

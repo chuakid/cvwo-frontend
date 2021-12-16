@@ -1,4 +1,4 @@
 export default interface ProjectUser {
-    Username?: string,
-    Role? : number,
+    username: string,
+    role : number,
 }

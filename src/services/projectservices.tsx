@@ -15,3 +15,7 @@ export function getProject(id: number) {
 export function deleteProject(id: number) {
     return API.delete("/project/" + id)
 }
+
+export function addUserToProject(projectid: number, username: string) {
+    return API.post("/project/" + projectid + "/" + username)
+}

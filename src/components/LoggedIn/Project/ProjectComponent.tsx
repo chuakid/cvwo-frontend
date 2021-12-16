@@ -8,6 +8,7 @@ import CreateTaskInput from './CreateTaskInput';
 import DeleteProjectButton from './DeleteProjectButton';
 import NoTasksComponent from './NoTasksComponent';
 import TaskComponent from './TaskComponent';
+import UsersComponent from './Users/UsersComponent';
 
 const ProjectComponent = () => {
 
@@ -31,17 +32,20 @@ const ProjectComponent = () => {
 
     return (
         <Flex flexDirection="column" flex="1" p="3">
-            <Flex gap="2">
+            <Flex justifyContent="space-between" gap="2">
                 <CreateTaskInput projectid={project ? project.id : -1} />
-                <DeleteProjectButton id={project?.id} />
+                <Flex gap="2">
+                    <UsersComponent project={project}/>
+                    <DeleteProjectButton id={project?.id} />
+                </Flex>
+
             </Flex>
             {loading ? <Center flex="1" fontSize="4xl"><Spinner mr="2" size="xl" />Loading</Center> :
-                sortedTasks?.length > 0 ? 
-                <Wrap mt="2">
-                    {sortedTasks?.map((task) => <WrapItem key={task.id}><TaskComponent task={task}></TaskComponent></WrapItem>)}
-                </Wrap> 
-                : <NoTasksComponent />
-
+                sortedTasks?.length > 0 ?
+                    <Wrap mt="2">
+                        {sortedTasks?.map((task) => <WrapItem key={task.id}><TaskComponent task={task}></TaskComponent></WrapItem>)}
+                    </Wrap>
+                    : <NoTasksComponent />
             }
         </Flex>
     )

@@ -28,7 +28,7 @@ const DeleteProjectButton = ({ id }: { id: number }) => {
             isOpen={isOpen}
         >
             <PopoverTrigger>
-                <Button onClick={onOpen} colorScheme="red"><DeleteIcon /> Delete Project</Button>
+                <Button onClick={onOpen} colorScheme="red"><DeleteIcon mr="2"/> Delete Project</Button>
             </PopoverTrigger>
             <PopoverContent>
                 <PopoverArrow />

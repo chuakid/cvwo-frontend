@@ -30,13 +30,16 @@ const ProjectComponent = () => {
     const sortedTasks = project?.tasks?.map(x => x)
         .sort((a, b) => { return a.completed && b.completed ? 0 : a.completed ? 1 : -1 }) || []
 
+    const curUser = useAppSelector(state => state.user.username)
+    const isOwner = project.users?.find((x) => x.username === curUser)?.role === 1
+
     return (
         <Flex flexDirection="column" flex="1" p="3">
             <Flex justifyContent="space-between" gap="2">
                 <CreateTaskInput projectid={project ? project.id : -1} />
                 <Flex gap="2">
-                    <UsersComponent project={project}/>
-                    <DeleteProjectButton id={project?.id} />
+                    <UsersComponent isOwner={isOwner} project={project} />
+                    {isOwner && <DeleteProjectButton id={project?.id} />}
                 </Flex>
 
             </Flex>

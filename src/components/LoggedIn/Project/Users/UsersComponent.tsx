@@ -4,12 +4,12 @@ import React from 'react'
 import Project from '../../../../types/Project'
 import ShareModal from './ShareModal'
 
-const UsersComponent = ({project}: {project: Project}) => {
+const UsersComponent = ({project, isOwner}: {project: Project, isOwner: boolean}) => {
     const {isOpen, onClose, onOpen} = useDisclosure()
     return (
         <>
             <Button colorScheme="green" onClick={onOpen}><LinkIcon mr="2"/> Share</Button>
-            <ShareModal isOpen={isOpen} onClose={onClose} project={project} />
+            <ShareModal isOwner={isOwner} isOpen={isOpen} onClose={onClose} project={project} />
         </>
     )
 }

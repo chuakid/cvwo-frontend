@@ -9,7 +9,7 @@ export const ProjectsSlice = createSlice({
         setProjects: (state, action) => {
             for (let i = 0; i < action.payload.length; i++) {
                 const project: Project = action.payload[i]
-                state[project.id] = project
+                state[project.id] = {...state[project.id], ...project} //prevent overriding when visiing /project/{projectid}
             }
         },
         addProject: (state, action) => {
@@ -26,7 +26,7 @@ export const ProjectsSlice = createSlice({
         setAllTasks(state, action) {
             for (let i = 0; i < action.payload?.length; i++) {
                 const task = action.payload[i] as Task
-                if (!state[task.projectid].tasks) state[task.projectid].tasks = []
+                state[task.projectid].tasks = []
                 state[task.projectid].tasks?.push(task)
             }
         },

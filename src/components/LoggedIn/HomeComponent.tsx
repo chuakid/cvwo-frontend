@@ -3,8 +3,7 @@ import { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { getProjects } from '../../services/projectservices'
-import { getAllTasks } from '../../services/taskservices'
-import { setAllTasks, setProjects } from '../../store/projectSlice'
+import { setProjects } from '../../store/projectSlice'
 import { useAppDispatch } from '../../store/typedHooks'
 import Navbar from './Navbar/Navbar'
 import Sidebar from './Sidebar/Sidebar'
@@ -19,10 +18,6 @@ const HomeComponent = () => {
         getProjects(controller.signal)
             .then((result) => {
                 dispatch(setProjects(result.data))
-            })
-            .then(() => getAllTasks(controller.signal))
-            .then((result) => {
-                dispatch(setAllTasks(result.data))
             }).catch((error: AxiosError) => {
                 console.log(error);
             }).finally(() => setLoading(false))

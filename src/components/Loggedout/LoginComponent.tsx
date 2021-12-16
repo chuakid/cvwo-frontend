@@ -7,7 +7,7 @@ import useCheckLoggedOut from './CheckLoggedOut';
 import { setAppToken, setAppUsername } from '../../helpers/userhelpers';
 
 const LoginComponent = () => {
-    const styles = useColorModeValue({ formBg: "gray.100", borderColor:"gray.300" }, { formBg: "gray.700", borderColor:"gray.700" })
+    const styles = useColorModeValue({ formBg: "gray.100", borderColor: "gray.300" }, { formBg: "gray.700", borderColor: "gray.700" })
     const toast = useToast()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -45,7 +45,7 @@ const LoginComponent = () => {
 
     return (
         <Center h="100vh">
-            <Flex as="form" background={styles.formBg} rounded="md" padding="5" boxShadow="lg" border="1px" borderColor={styles.borderColor}>
+            <Flex onKeyUp={(e) => { if (e.key === "Enter") handleLogin() }} as="form" background={styles.formBg} rounded="md" padding="5" boxShadow="lg" border="1px" borderColor={styles.borderColor}>
                 <Stack>
                     <FormControl required>
                         <FormLabel>Username</FormLabel>

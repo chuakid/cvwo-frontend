@@ -13,7 +13,7 @@ const Navbar = () => {
     }
     return (
         <Flex bgColor="gray.700" as="nav" px="4" py="2" justifyContent="space-between" >
-            <Text as={Link} to="/" fontSize="3xl" color="white">TewDew</Text>
+            <Text as={Link} to="/" fontSize={{"sm": "xl", "md": "3xl"}} color="white">TewDew</Text>
             <SearchBar></SearchBar>
             <HStack>
                 <Button colorScheme="gray" onClick={toggleColorMode}>{colorIcon}</Button>

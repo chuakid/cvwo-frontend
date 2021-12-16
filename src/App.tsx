@@ -18,7 +18,7 @@ function App() {
   }
 
   return (
-    <Box as="main" minH="100vh" minW="100vw" className="App">
+    <Box as="main" minH="100vh" w="100%" className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<LoginComponent />}></Route>

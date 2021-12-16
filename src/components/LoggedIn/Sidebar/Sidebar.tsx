@@ -5,7 +5,7 @@ import ProjectsComponent from './ProjectsComponent'
 const Sidebar = () => {
     const bgColor = useColorModeValue("gray.50", "gray.700")
     return (
-        <Flex p="3" w={{ base: "100px", md: "200px", lg: "300px" }} boxShadow="md" bgColor={bgColor} flexDirection="column" justifyContent="space-between">
+        <Flex p="3" w="200px" boxShadow="md" bgColor={bgColor} flexDirection="column" justifyContent="space-between">
             <ProjectsComponent />
         </Flex>
     )

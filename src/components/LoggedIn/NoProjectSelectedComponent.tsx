@@ -1,25 +1,12 @@
-import { Box } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
-import { getAllTasks } from '../../services/taskservices'
-import { setAllTasks } from '../../store/projectSlice'
-import { useAppDispatch, useAppSelector } from '../../store/typedHooks'
-import ProjectContainerComponent from './ProjectContainerComponent'
+import { Box, Heading } from '@chakra-ui/react'
+import { useAppSelector } from '../../store/typedHooks'
 
 const NoProjectSelectedComponent = () => {
-    //get all projects
-    const projects = useAppSelector(state => Object.values(state.projects))
-    const dispatch = useAppDispatch()
-    useEffect(() => {
-        const controller = new AbortController()
-        getAllTasks(controller.signal)
-            .then((result) => {
-                dispatch(setAllTasks(result.data))
-            })
-        return () => controller.abort()
-    }, [dispatch])
+    const username = useAppSelector(state => state.user.username)
     return (
         <Box flex="1" p="3" overflowY="auto">
-            {projects.map((project) => <ProjectContainerComponent key={project.id} project={project}></ProjectContainerComponent>)}
+            <Heading>Welcome {username}!</Heading>
+            Start by creating a project on the left!
         </Box>
     )
 }

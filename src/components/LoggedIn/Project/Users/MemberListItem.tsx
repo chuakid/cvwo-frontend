@@ -3,7 +3,11 @@ import React from 'react'
 import { useAppSelector } from '../../../../store/typedHooks'
 import ProjectUser from '../../../../types/ProjectUser'
 
+<<<<<<< HEAD:src/components/LoggedIn/Project/Users/MemberListItem.tsx
 const MemberListItem = ({ user, isOwner }: { user: ProjectUser, isOwner: boolean }) => {
+=======
+const UserComponent = ({ user, isOwner }: { user: ProjectUser, isOwner: boolean }) => {
+>>>>>>> refs/remotes/origin/master:src/components/LoggedIn/Project/Users/UserComponent.tsx
     const isCurrentUser = useAppSelector(state => state.user.username) === user.username
     return (
         <Flex as={ListItem} justifyContent="space-between">

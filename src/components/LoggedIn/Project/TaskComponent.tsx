@@ -1,6 +1,5 @@
 import { DeleteIcon } from '@chakra-ui/icons'
-import { Button, Editable, EditableInput, EditablePreview, Flex, toast, useToast } from '@chakra-ui/react'
-import React from 'react'
+import { Button, Editable, EditableInput, EditablePreview, Flex, useToast } from '@chakra-ui/react'
 import { deleteTask, renameTask, setTaskCompletion } from '../../../services/taskservices'
 import { editTask, deleteTask as storeDeleteTask } from '../../../store/projectSlice'
 import { useAppDispatch } from '../../../store/typedHooks'

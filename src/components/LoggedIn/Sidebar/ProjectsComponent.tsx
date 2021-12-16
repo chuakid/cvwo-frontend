@@ -1,4 +1,4 @@
-import { Box, Divider, Heading, Stack } from '@chakra-ui/react'
+import { Box, Heading, Stack } from '@chakra-ui/react'
 import { useAppSelector } from '../../../store/typedHooks'
 import Project from '../../../types/Project'
 import CreateProject from './CreateProject'

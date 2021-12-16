@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Button, Center, Flex, FormControl, FormLabel, Link, Stack, useColorModeValue, useToast } from "@chakra-ui/react"
 import FormInput from '../FormInput';
 import { login } from '../../services/userservices';
-import { useAppDispatch } from '../../store/typedHooks';
 import { Link as RouterLink } from 'react-router-dom';
 import useCheckLoggedOut from './CheckLoggedOut';
 import { setAppToken, setAppUsername } from '../../helpers/userhelpers';
@@ -13,7 +12,6 @@ const LoginComponent = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false)
-    const dispatch = useAppDispatch()
     useCheckLoggedOut();
 
     function handleLogin() {

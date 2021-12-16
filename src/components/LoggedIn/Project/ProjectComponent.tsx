@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Spinner, Wrap, WrapItem } from '@chakra-ui/react';
+import { Center, Flex, Spinner, Wrap, WrapItem } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from "react-router-dom";
 import { getProject } from '../../../services/projectservices';

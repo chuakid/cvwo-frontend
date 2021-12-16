@@ -25,7 +25,7 @@ const AddUserComponent = ({ projectid }: { projectid: number }) => {
     }
 
     return (
-        <Flex mt="2">
+        <Flex flex="1" mt="2">
             <InputGroup size="sm" rounded="lg">
                 <Input onInput={(e) => setUsername(e.currentTarget.value)} value={username} placeholder="Add other users" />
                 <InputRightAddon isLoading={loading} onClick={handleAddUser} as={Button}>Add</InputRightAddon>

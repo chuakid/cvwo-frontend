@@ -1,5 +1,5 @@
 import { DeleteIcon } from '@chakra-ui/icons'
-import { Button, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverHeader, PopoverTrigger, useDisclosure } from '@chakra-ui/react'
+import { Button, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverHeader, PopoverTrigger, useDisclosure, useToast } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { deleteProject } from '../../../services/projectservices'
 import { deleteProject as storeDeleteProject } from '../../../store/projectSlice'
@@ -9,11 +9,15 @@ import { useAppDispatch } from '../../../store/typedHooks'
 const DeleteProjectButton = ({ id }: { id: number }) => {
     const { onOpen, onClose, isOpen } = useDisclosure()
     const navigate = useNavigate()
+    const toast = useToast()
     const dispatch = useAppDispatch()
     function handleDelete() {
         deleteProject(id)
             .then(result => {
                 dispatch(storeDeleteProject(id))
+                toast({
+                    description: "Project deleted."
+                })
                 navigate("/")
             }).catch(e => console.log(e))
     }

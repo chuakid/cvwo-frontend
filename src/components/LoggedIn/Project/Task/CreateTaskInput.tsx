@@ -8,15 +8,17 @@ import Task from '../../../../types/Task'
 const CreateTaskInput = ({ projectid }: { projectid: number }) => {
     const dispatch = useAppDispatch()
     const [task, setTask] = useState("")
+    const [loading, setLoading] = useState(false)
     const toast = useToast()
     function handleCreateTask() {
-        if(task === "") {
+        if (task === "") {
             toast({
                 description: "Please enter a task name",
                 status: "error"
             })
             return
         }
+        setLoading(true)
         createTask(projectid, task).then(
             (result) => {
                 dispatch(addTaskToProject({
@@ -24,6 +26,7 @@ const CreateTaskInput = ({ projectid }: { projectid: number }) => {
                     description: task,
                     projectid: projectid
                 } as Task))
+                setLoading(false)
             })
             .catch(e => console.log(e))
         setTask("")
@@ -38,7 +41,7 @@ const CreateTaskInput = ({ projectid }: { projectid: number }) => {
                     handleCreateTask()
                 }
             }} placeholder="Create a task"></Input>
-            <InputRightAddon colorScheme="gray" as={Button} onClick={handleCreateTask}>
+            <InputRightAddon colorScheme="gray" isLoading={loading} as={Button} onClick={handleCreateTask}>
                 Add Task
             </InputRightAddon>
         </InputGroup>

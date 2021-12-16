@@ -1,4 +1,5 @@
 # Frontend for CVWO Assignment
+Currently deployed to https://cvwo-frontend.vercel.app/
 
 ## Technologies Used
 - Redux (With redux toolkit)

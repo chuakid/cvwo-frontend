@@ -6,6 +6,7 @@ import { editProject } from '../../../store/projectSlice';
 import { useAppDispatch, useAppSelector } from '../../../store/typedHooks';
 import CreateTaskInput from './CreateTaskInput';
 import DeleteProjectButton from './DeleteProjectButton';
+import NoTasksComponent from './NoTasksComponent';
 import TaskComponent from './TaskComponent';
 
 const ProjectComponent = () => {
@@ -26,20 +27,23 @@ const ProjectComponent = () => {
     const project = useAppSelector(state => state.projects[id])
     //Sort tasks, completed last
     const sortedTasks = project?.tasks?.map(x => x)
-        .sort((a, b) => { return a.completed && b.completed ? 0 : a.completed ? 1 : -1 })
+        .sort((a, b) => { return a.completed && b.completed ? 0 : a.completed ? 1 : -1 }) || []
 
     return (
-        <Box flex="1" p="3">
+        <Flex flexDirection="column" flex="1" p="3">
             <Flex gap="2">
                 <CreateTaskInput projectid={project ? project.id : -1} />
                 <DeleteProjectButton id={project?.id} />
             </Flex>
-            {loading ? <Center fontSize="4xl" h="100vh"><Spinner mr="2" size="xl" />Loading</Center> :
+            {loading ? <Center flex="1" fontSize="4xl"><Spinner mr="2" size="xl" />Loading</Center> :
+                sortedTasks?.length > 0 ? 
                 <Wrap mt="2">
                     {sortedTasks?.map((task) => <WrapItem key={task.id}><TaskComponent task={task}></TaskComponent></WrapItem>)}
-                </Wrap>
+                </Wrap> 
+                : <NoTasksComponent />
+
             }
-        </Box>
+        </Flex>
     )
 }
 

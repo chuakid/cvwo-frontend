@@ -18,9 +18,10 @@ const HomeComponent = () => {
         getProjects(controller.signal)
             .then((result) => {
                 dispatch(setProjects(result.data))
+                setLoading(false)
             }).catch((error: AxiosError) => {
                 console.log(error);
-            }).finally(() => setLoading(false))
+            })
         return () => {
             controller.abort()
         }

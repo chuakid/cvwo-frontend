@@ -9,7 +9,7 @@ const NoProjectSelectedComponent = () => {
 
     return (
         <Box flex="1" p="3" overflowY="auto">
-            {projects.map((project) => project.Tasks && <ProjectContainerComponent key={project.id} project={project}></ProjectContainerComponent>)}
+            {projects.map((project) => project.tasks && <ProjectContainerComponent key={project.id} project={project}></ProjectContainerComponent>)}
         </Box>
     )
 }

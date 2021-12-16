@@ -1,8 +1,8 @@
-import User from "./User"
 import Task from "./Task"
+import ProjectUser from "./ProjectUser"
 export default interface Project{
     id: number,
     name: string,
-    Users?: User[],
-    Tasks?: Task[]
+    users?: ProjectUser[],
+    tasks?: Task[]
 }

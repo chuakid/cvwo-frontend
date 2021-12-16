@@ -6,7 +6,7 @@ import TaskComponent from './Project/TaskComponent'
 
 
 const ProjectContainerComponent = ({ project }: { project: Project }) => {
-    const sortedTasks = project.Tasks?.map(x => x)
+    const sortedTasks = project.tasks?.map(x => x)
         .sort((a, b) => { return a.completed && b.completed ? 0 : a.completed ? 1 : -1 }) || []
     const borderColor = useColorModeValue("gray.200", "gray.600")
 

@@ -18,22 +18,22 @@ export const ProjectsSlice = createSlice({
         addTaskToProject(state, action) {
             const project = state[(action.payload as Task).projectid]
             if (!project) return state
-            if (project && !project.Tasks) {
-                project.Tasks = []
+            if (project && !project.tasks) {
+                project.tasks = []
             }
-            project?.Tasks?.push(action.payload)
+            project?.tasks?.push(action.payload)
         },
         setAllTasks(state, action) {
             for (let i = 0; i < action.payload?.length; i++) {
                 const task = action.payload[i] as Task
-                if (!state[task.projectid].Tasks) state[task.projectid].Tasks = []
-                state[task.projectid].Tasks?.push(task)
+                if (!state[task.projectid].tasks) state[task.projectid].tasks = []
+                state[task.projectid].tasks?.push(task)
             }
         },
         editTask(state, action) {
             const task: Task = action.payload
             const project = state[task.projectid]
-            project.Tasks = project.Tasks?.map(x => x.id === task.id ? task : x)
+            project.tasks = project.tasks?.map(x => x.id === task.id ? task : x)
         },
         deleteProject(state, action) {
             const id = action.payload
@@ -42,13 +42,17 @@ export const ProjectsSlice = createSlice({
         deleteTask(state, action) {
             const task: Task = action.payload
             const project = state[task.projectid]            
-            project.Tasks = project.Tasks?.filter(x => x.id !== task.id)
+            project.tasks = project.tasks?.filter(x => x.id !== task.id)
 
+        },
+        editProject(state, action) {
+            const project: Project = action.payload
+            state[project.id] = project
         }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { deleteTask, deleteProject, editTask, setAllTasks, setProjects, addProject, addTaskToProject } = ProjectsSlice.actions
+export const { editProject, deleteTask, deleteProject, editTask, setAllTasks, setProjects, addProject, addTaskToProject } = ProjectsSlice.actions
 
 export default ProjectsSlice.reducer

@@ -10,7 +10,6 @@ const ProjectsComponent = () => {
     return (
         <Box>
             <Heading mb="2" fontSize="2xl">PROJECTS</Heading>
-            <Divider></Divider>
             <Stack>
                 {projects.map((project: Project) => <ProjectLink key={project.id} project={project} />)}
             </Stack>

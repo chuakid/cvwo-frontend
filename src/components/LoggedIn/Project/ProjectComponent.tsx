@@ -53,7 +53,7 @@ const ProjectComponent = () => {
         <Flex flexDirection="column" flex="1" p="3">
             <Flex justifyContent="space-between" gap="2">
                 <CreateTaskInput projectid={project ? project.id : -1} />
-                <Select placeholder="Show all" onInput={e => setFilter(parseInt(e.currentTarget.value))}>
+                <Select bgColor={taskColors[filter]} placeholder="Show all" onInput={e => setFilter(parseInt(e.currentTarget.value))}>
                     {Object.keys(taskColors).map(x => <option value={x}>Show {taskColors[x].split(".")[0]}</option>
                     )}
                 </Select>

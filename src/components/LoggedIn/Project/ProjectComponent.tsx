@@ -1,4 +1,4 @@
-import { Center, Flex, Spinner, useColorModeValue, Wrap, WrapItem } from '@chakra-ui/react';
+import { Center, Flex, Select, Spinner, useColorModeValue, Wrap, WrapItem } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from "react-router-dom";
 import { getProject } from '../../../services/projectservices';
@@ -27,8 +27,14 @@ const ProjectComponent = () => {
     }, [navigate, dispatch, id])
     const project = useAppSelector(state => state.projects[id])
     //Sort tasks, completed last
-    const sortedTasks = project?.tasks?.map(x => x)
+    let sortedTasks = project?.tasks?.map(x => x)
         .sort((a, b) => { return a.completed && b.completed ? 0 : a.completed ? 1 : -1 }) || []
+
+    const [filter, setFilter] = useState(-1)
+    if (filter > 0) {
+        sortedTasks = sortedTasks.filter(x => x.color === filter)
+    }
+
 
     const curUser = useAppSelector(state => state.user.username)
     const isOwner = project?.users?.find((x) => x.username === curUser)?.role === 1
@@ -47,6 +53,10 @@ const ProjectComponent = () => {
         <Flex flexDirection="column" flex="1" p="3">
             <Flex justifyContent="space-between" gap="2">
                 <CreateTaskInput projectid={project ? project.id : -1} />
+                <Select placeholder="Show all" onInput={e => setFilter(parseInt(e.currentTarget.value))}>
+                    {Object.keys(taskColors).map(x => <option value={x}>Show {taskColors[x].split(".")[0]}</option>
+                    )}
+                </Select>
                 <Flex gap="2">
                     <UsersComponent isOwner={isOwner} project={project} />
                     {isOwner && <DeleteProjectButton id={project?.id} />}
@@ -56,7 +66,7 @@ const ProjectComponent = () => {
             {loading ? <Center flex="1" fontSize="4xl"><Spinner mr="2" size="xl" />Loading</Center> :
                 sortedTasks?.length > 0 ?
                     <Wrap mt="2">
-                        {sortedTasks?.map((task) => <WrapItem key={task.id}><TaskComponent taskcolors = {taskColors} task={task}></TaskComponent></WrapItem>)}
+                        {sortedTasks?.map((task) => <WrapItem key={task.id}><TaskComponent taskcolors={taskColors} task={task}></TaskComponent></WrapItem>)}
                     </Wrap>
                     : <NoTasksComponent />
             }

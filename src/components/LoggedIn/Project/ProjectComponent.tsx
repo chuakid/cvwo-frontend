@@ -1,4 +1,4 @@
-import { Center, Flex, Spinner, Wrap, WrapItem } from '@chakra-ui/react';
+import { Center, Flex, Spinner, useColorModeValue, Wrap, WrapItem } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from "react-router-dom";
 import { getProject } from '../../../services/projectservices';
@@ -33,6 +33,16 @@ const ProjectComponent = () => {
     const curUser = useAppSelector(state => state.user.username)
     const isOwner = project?.users?.find((x) => x.username === curUser)?.role === 1
 
+    const taskColors = useColorModeValue({
+        "1": "gray.300",
+        "2": "blue.300",
+        "3": "red.300"
+    }, {
+        "1": "gray.700",
+        "2": "blue.700",
+        "3": "red.700"
+    }) as { [key: string]: string }
+
     return (
         <Flex flexDirection="column" flex="1" p="3">
             <Flex justifyContent="space-between" gap="2">
@@ -46,7 +56,7 @@ const ProjectComponent = () => {
             {loading ? <Center flex="1" fontSize="4xl"><Spinner mr="2" size="xl" />Loading</Center> :
                 sortedTasks?.length > 0 ?
                     <Wrap mt="2">
-                        {sortedTasks?.map((task) => <WrapItem key={task.id}><TaskComponent task={task}></TaskComponent></WrapItem>)}
+                        {sortedTasks?.map((task) => <WrapItem key={task.id}><TaskComponent taskcolors = {taskColors} task={task}></TaskComponent></WrapItem>)}
                     </Wrap>
                     : <NoTasksComponent />
             }

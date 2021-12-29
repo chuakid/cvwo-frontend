@@ -24,7 +24,9 @@ const CreateTaskInput = ({ projectid }: { projectid: number }) => {
                 dispatch(addTaskToProject({
                     id: result.data.id,
                     description: task,
-                    projectid: projectid
+                    projectid: projectid,
+                    color: 1,
+                    completed: false
                 } as Task))
                 setLoading(false)
             })

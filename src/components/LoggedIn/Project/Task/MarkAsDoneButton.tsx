@@ -13,9 +13,7 @@ const MarkAsDoneButton = ({ task }: { task: Task }) => {
         setTaskCompletion(task.id, !task.completed)
             .then((result) => {
                 dispatch(editTask({
-                    id: task.id,
-                    description: task.description,
-                    projectid: task.projectid,
+                    ...task,
                     completed: !task.completed
                 }))
                 setLoading(false)

@@ -13,7 +13,7 @@ export function setAPIToken(token: string) {
 API.interceptors.response.use(function (config) {
     return config;
 }, function (error: AxiosError) {
-        if(error.response?.data === "Invalid token") {
+        if(error.response?.data === "Invalid token\n") {
             logout()
             return
         }

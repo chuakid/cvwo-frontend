@@ -12,6 +12,12 @@ export function renameTask(taskid: number, description: string) {
     })
 }
 
+export function changeColor(taskid: number, color: number) {
+    return API.post("/task/" + taskid + "/color", {
+        color: color
+    })
+}
+
 export function getAllTasks(signal: AbortSignal) {
     return API.get("/tasks", { signal: signal })
 }

@@ -1,6 +1,9 @@
 # Frontend for CVWO Assignment
 Currently deployed to https://cvwo-frontend.vercel.app/
 
+Name: Kelvin Chua
+Matriculation Number: A0235179X
+
 ## Technologies Used
 - Redux (With redux toolkit)
 - React

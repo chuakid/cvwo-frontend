@@ -10,6 +10,7 @@ Matriculation Number: A0235179X
 - React
 - ChakraUI (Component library using TailwindCSS)
 - Axios
+- TypeScript
 - Developed on node v16.13.1
 
 ## Development
